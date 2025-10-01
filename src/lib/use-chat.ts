@@ -218,7 +218,7 @@ export type UseChatHelpers<UI_MESSAGE extends UIMessage> = {
  * A Qwik hook for managing a chat conversation, with an API
  * inspired by the Vercel AI SDK for React.
  */
-export function useChat$<UI_MESSAGE extends UIMessage = UIMessage>(
+export function useChat<UI_MESSAGE extends UIMessage = UIMessage>(
   options: UseChatOptions<UI_MESSAGE> = {}
 ): UseChatHelpers<UI_MESSAGE> {
   const chatControllerStore = useStore<{

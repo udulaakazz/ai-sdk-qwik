@@ -1,6 +1,6 @@
-# `useChat$` Hook API Reference (for Qwik)
+# `useChat` Hook API Reference (for Qwik)
 
-The `useChat$` hook for Qwik provides a powerful, reactive interface for building conversational UIs. Inspired by the Vercel AI SDK for React, it handles streaming responses, state management, and user interactions, all in a way that is idiomatic to the Qwik framework.
+The `useChat` hook for Qwik provides a powerful, reactive interface for building conversational UIs. Inspired by the Vercel AI SDK for React, it handles streaming responses, state management, and user interactions, all in a way that is idiomatic to the Qwik framework.
 
 It manages the entire lifecycle of a chat conversation, from sending user messages to rendering streamed AI responses and handling complex features like tool calls.
 
@@ -14,12 +14,12 @@ Here is a complete example of a simple chat component using the `useChat` hook.
 // src/components/chat/chat.tsx
 
 import { component$, $ } from "@builder.io/qwik";
-import { useChat$, type UIMessage } from "./use-chat";
+import { useChat, type UIMessage } from "./use-chat";
 import { generateUUID } from "~/lib/utils"; // Your custom UUID function
 
 export const MyChatComponent = component$(() => {
   const { messages, status, sendMessage, error, clearError } =
-    useChat$<UIMessage>({
+    useChat<UIMessage>({
       // A unique ID for the conversation.
       id: "my-unique-chat-id",
 
@@ -89,7 +89,7 @@ export const MyChatComponent = component$(() => {
 
 ## API Reference
 
-### `useChat$(options)`
+### `useChat(options)`
 
 The hook takes a single `options` object as its parameter.
 
@@ -150,7 +150,7 @@ The hook returns a reactive object with the following properties.
 The most common advanced use case is adding custom data to the API request. Use the `prepareSendMessagesRequest$` QRL for this.
 
 ```tsx
-const { sendMessage } = useChat$({
+const { sendMessage } = useChat({
   transport: {
     api: "/api/chat/custom",
     prepareSendMessagesRequest$: $((request) => {
